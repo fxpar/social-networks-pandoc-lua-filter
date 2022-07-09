@@ -8,12 +8,26 @@ local social_networks =''
 
 Meta = function(metadata)
 	local url=''
-	metadata.urlblock = pandoc.RawInline('html','')
 	if metadata.url then url = metadata.url end
+	local t = pandoc.utils.stringify(metadata.title)
+	local u = pandoc.utils.stringify(metadata.url)
+	local link = pandoc.Link(t,u)
+	local socialblock = make_social(link)
+	-- metadata.socialblock = pandoc.RawInline('html',socialblock)
+	metadata.socialblock = socialblock
 	return metadata
 end
 
+
+
+
 Link = function(el)
+	return make_social(el)
+end
+
+
+
+function make_social(el)
 	-- local post = make_social(el)
 	local content=pandoc.utils.stringify(el.content)
 	local content_e = urlencode(content)
@@ -34,7 +48,7 @@ Link = function(el)
 	
 	<a href="https://telegram.me/share/url?url=]]..target_e..[[&text=]]..content_e..[[">Telegram</a>
 	
-	<a href="mailto:?subject=Super%20link&body=]]..target_e..[[\n]]..content_e..[[
+	<a href="mailto:?subject=Super%20link&body=]]..target_e..[[%0D%0A]]..content_e..[[">Mail</a>
 	
 	</span>
 	]]
@@ -56,7 +70,7 @@ end
 
 
 
-function make_social(el)
+function make_social_0(el)
 	-- local content = ''
 	-- if el.content then content=pandoc.utils.stringify(el.content) end
 	-- print(content)
