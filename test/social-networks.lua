@@ -34,6 +34,8 @@ Link = function(el)
 	
 	<a href="https://telegram.me/share/url?url=]]..target_e..[[&text=]]..content_e..[[">Telegram</a>
 	
+	<a href="mailto:?subject=Super%20link&body=]]..target_e..[[\n]]..content_e..[[
+	
 	</span>
 	]]
 	
