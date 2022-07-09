@@ -15,27 +15,46 @@ end
 
 Link = function(el)
 	-- local post = make_social(el)
-	local post = pandoc.RawInline('html','<span>finished</span>')
-	-- table.insert(el,post)
+	local content=pandoc.utils.stringify(el.content)
+	local content_e = urlencode(content)
+	local target = el.target
+	local target_e = urlencode(target)
+	-- local mysocial = '<span>finished</span>'
+	local mysocial = [[
+	
+	<span>
+	<a href="https://www.facebook.com/sharer/sharer.php?u=]]..target_e..[[">Facebook</a>
+	
+	
+	<a href="http://twitter.com/intent/tweet?text=]]..content_e..[[&url=]]..target_e..[[">Twitter</a>
+	
+	<a href="http://www.linkedin.com/shareArticle?mini=true&url=]]..target_e..[[&title=]]..content_e..[[">LinkedIn</a>
+	
+	<a href="https://wa.me/?text=]]..content_e..[[%20]]..target_e..[[">Whatsapp</a>
+	
+	<a href="https://telegram.me/share/url?url=]]..target_e..[[&text=]]..content_e..[[">Telegram</a>
+	
+	</span>
+	]]
+	
+	local post = pandoc.RawInline('html',mysocial)
 	print(el.content)
 	return {el, post}
 end
 
 
---[[
-local function urlencode (str)
+
+function urlencode (str)
    str = string.gsub (str, "([^0-9a-zA-Z!'()*._~-])", -- locale independent
       function (c) return string.format ("%%%02X", string.byte(c)) end)
    --str = string.gsub (str, " ", "+")
    return str
 end
 
-function make_social_0(el)
-	el.target
-end
 
 
-function make_social_0(el)
+
+function make_social(el)
 	-- local content = ''
 	-- if el.content then content=pandoc.utils.stringify(el.content) end
 	-- print(content)
@@ -51,4 +70,4 @@ function make_social_0(el)
 	-- table.insert(el.content,post)
 	return el.content
 end
---]]
+
