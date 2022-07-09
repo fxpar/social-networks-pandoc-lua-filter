@@ -34,4 +34,5 @@ Result:
 
 ## Usage
 
-pandoc input.md 
+pandoc input.md --lua-filter social-networks.lua -o output.html
+
