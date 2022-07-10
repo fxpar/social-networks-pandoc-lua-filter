@@ -70,20 +70,3 @@ end
 
 
 
-function make_social_0(el)
-	-- local content = ''
-	-- if el.content then content=pandoc.utils.stringify(el.content) end
-	-- print(content)
-	local target = el.target
-	-- local content_e = urlencode(content)
-	-- print(content_e)
-	local target_e = urlencode(target)
-	-- recreate the link or embed for the element
-	-- local pre = pandoc.RawInline('html','<a href="'..pandoc.utils.stringify(el.target)..'">'..pandoc.utils.stringify(el.content)..'</a>')
-	local pre = pandoc.RawInline('html','<a href="'..pandoc.utils.stringify(el.target)..'">'..pandoc.utils.stringify(el.target)..'</a>')
-	-- local post = pandoc.RawInline('html','<div>my link:'..content_e ..'</div>')
-	table.insert(el.content,1,pre)
-	-- table.insert(el.content,post)
-	return el.content
-end
-
