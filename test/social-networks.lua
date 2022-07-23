@@ -12,7 +12,7 @@ Meta = function(metadata)
 	local t = pandoc.utils.stringify(metadata.title)
 	local u = pandoc.utils.stringify(metadata.url)
 	local link = pandoc.Link(t,u)
-	local socialblock = make_social(link)
+	local socialblock = make_social(link, false)
 	-- metadata.socialblock = pandoc.RawInline('html',socialblock)
 	metadata.socialblock = socialblock
 	return metadata
@@ -22,12 +22,15 @@ end
 
 
 Link = function(el)
+	if el.classes[1] == "social" then 
 	return make_social(el)
+	end
+	return el
 end
 
 
 
-function make_social(el)
+function make_social(el, includelink)
 	-- local post = make_social(el)
 	local content=pandoc.utils.stringify(el.content)
 	local content_e = urlencode(content)
@@ -55,7 +58,11 @@ function make_social(el)
 	
 	local post = pandoc.RawInline('html',mysocial)
 	print(el.content)
-	return {el, post}
+	if includelink == false then
+		return post
+	else
+		return {el, post}
+	end
 end
 
 
