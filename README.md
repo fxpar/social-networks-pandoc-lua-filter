@@ -41,4 +41,31 @@ Result:
 
 ```
 
+## Template usage
 
+See an application in the [markdown to bootstrap template](https://github.com/fxpar/markdown-to-bootstrap-pandoc-lua-filter/blob/main/template/bs5.template.html)
+
+```
+<nav class="navbar sticky-top navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+	
+	<!-- Sharing links dropdown -->
+	$if(socialblock)$
+	<div class="btn-group" role="group">
+		<button id="btnGroupDrop1" type="button" class="btn btn-Light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+		  Share
+		</button>
+		<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="btnGroupDrop1">
+		
+		$socialblock$
+		 </ul>
+	</div>
+	
+	</div>
+	$endif$
+</nav>
+
+```
