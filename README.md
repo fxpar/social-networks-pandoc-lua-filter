@@ -41,9 +41,22 @@ Result:
 
 ```
 
-## Template usage
+## Template Meta usage
 
-See an application in the [markdown to bootstrap template](https://github.com/fxpar/markdown-to-bootstrap-pandoc-lua-filter/blob/main/template/bs5.template.html)
+To be used in a template for the whole page, you can add a url in the Yaml Front matter:
+
+```
+
+---
+title: Social networks
+author: François Parlant
+description: adds a list of social networks sharing links
+url: https://fxpar.github.io/Pandoc-Lua-Markdown-Bootstrap/
+---
+```
+
+It can then be used in the template, for example in a bootstrap dropdown in the navbar:
+
 
 ```
 <nav class="navbar sticky-top navbar-light bg-light">
@@ -69,3 +82,5 @@ See an application in the [markdown to bootstrap template](https://github.com/fx
 </nav>
 
 ```
+
+See an application in the [markdown to bootstrap template](https://github.com/fxpar/markdown-to-bootstrap-pandoc-lua-filter/blob/main/template/bs5.template.html)
