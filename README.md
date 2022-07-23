@@ -2,6 +2,15 @@
 
 Lua filter to create a list of social networks links from an url, using pandoc.
 
+![sharing](/media/share.png) 
+
+
+## Usage
+
+pandoc input.md --lua-filter social-networks.lua -o output.html
+
+
+
 ## Example
 
 markdown:
@@ -32,8 +41,4 @@ Result:
 
 ```
 
-## Usage
 
-pandoc input.md --lua-filter social-networks.lua -o output.html
-
-![sharing](/media/share.png) 
